@@ -25,5 +25,6 @@ JCG Analysis
 
 ## Changelog
 > V1.1: Added JCGAnalysis.ipynb
+
 > V1: My first GitHub commit.
 
