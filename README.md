@@ -21,6 +21,7 @@ Contact me via Discord: **Finalys#7064**
 - *File:* `ShadowverseAPI.ipynb`
 - Retrieving useful information for shadowverse-portal
 - Cleaning the information
+- Other utilities: Scraping image assets
     
 **JCG Analysis**
 - *Files:* `JCGAnalysis.ipynb`, `DeckClassify.py`
@@ -28,9 +29,16 @@ Contact me via Discord: **Finalys#7064**
 - Cleaning and getting player information & decks
 - Identify the deck archetypes brought by players & descriptive statistics
 - Breakdown of each deck brought by players
+- Matchup analysis **(Work-in-progress)**
 - Export file to Excel
 
 ## Changelog
+
+>V1.3:
+>- Added image utitlies in `ShadowverseAPI.ipynb`
+>- Added 2 new sections to `JCGAnalysis.ipynb`: *Brackets Page, Matchup Analysis (WIP)*
+>- Updated `SVCardInfo.xlsx` for **Celestial Dragonblade** emergency patch
+
 
 >V1.2:
 >- Added 3 new sections to `JCGAnalysis.ipynb`: *Deck Classification & Summarization, Deck Breakdown, Exporting the results*
