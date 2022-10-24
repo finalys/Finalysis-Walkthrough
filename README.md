@@ -1,5 +1,7 @@
 # Finalysis Walkthrough
 
+**Note: If the notebook is taking too long to render on github,  head to https://nbviewer.org/ and paste the link.**
+
 ## Introduction & History
 Hi, I'm Finalys. You may know me as the author of Finalysis which started in 2020 as a personal project to learn about python. 
 
@@ -29,14 +31,14 @@ Contact me via Discord: **Finalys#7064**
 - Cleaning and getting player information & decks
 - Identify the deck archetypes brought by players & descriptive statistics
 - Breakdown of each deck brought by players
-- Matchup analysis **(Work-in-progress)**
+- Matchup analysis
 - Export file to Excel
 
 ## Changelog
 
 >V1.3:
 >- Added image utitlies in `ShadowverseAPI.ipynb`
->- Added 2 new sections to `JCGAnalysis.ipynb`: *Brackets Page, Matchup Analysis (WIP)*
+>- Added 2 new sections to `JCGAnalysis.ipynb`: *Brackets Page, Matchup Analysis*
 >- Updated `SVCardInfo.xlsx` for **Celestial Dragonblade** emergency patch
 
 
