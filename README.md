@@ -36,10 +36,13 @@ Contact me via Discord: **Finalys#7064**
 
 ## Changelog
 
+>V1.3.1:
+>- Updated `SVCardInfo.xlsx` for **Celestial Dragonblade** [Genesis Artifact nerf](https://shadowverse.com/news/?announce_id=2451)
+
 >V1.3:
 >- Added image utitlies in `ShadowverseAPI.ipynb`
 >- Added 2 new sections to `JCGAnalysis.ipynb`: *Brackets Page, Matchup Analysis*
->- Updated `SVCardInfo.xlsx` for **Celestial Dragonblade** emergency patch
+>- Updated `SVCardInfo.xlsx` for **Celestial Dragonblade** [Bat Usher nerf](https://shadowverse.com/news/?announce_id=2437)
 
 
 >V1.2:
