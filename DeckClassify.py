@@ -11,15 +11,15 @@ def DeckSearch(d):
         return (d.count('.1.') >= 1)
     def IsControlForest(d):
         return (sum(d.count(x) for x in ["Carbuncle, Sacred Emerald", "Piercye, Queen of Frost", "Yggdrasil, Root of Life"]) >= 6) & (sum(d.count(x) for x in ["Nobilis, Sable-Lily Queen", "Forest Merchant"]) <= 1)
-    def IsAggroForest(d):
-        return (sum(d.count(x) for x in ["Nobilis, Sable-Lily Queen", "Phantombloom Predator", "Aqua Fairy", "Flying Mistletoe Squirrel", "Forest Merchant"]) >= 8) & (sum(d.count(x) for x in ["Piercye, Queen of Frost", "Carbuncle, Sacred Emerald"]) <= 0)
+    def IsFairyForest(d):
+        return (sum(d.count(x) for x in ["Nobilis, Sable-Lily Queen", "Phantombloom Predator", "Aqua Fairy", "Flying Mistletoe Squirrel", "Forest Merchant", "Tam Lin, Fey Knight"]) >= 10) & (sum(d.count(x) for x in ["Piercye, Queen of Frost", "Carbuncle, Sacred Emerald"]) <= 0)
     
     if IsForest(d):
         x = "OTHER FOREST"
         if IsControlForest(d):
             x = "Control Forest"
         if IsAggroForest(d):
-            x = "Aggro Forest"
+            x = "Fairy Forest"
         if IsMjerrabaine(d):
             x = "Jerry Forest"
     
@@ -28,6 +28,10 @@ def DeckSearch(d):
         return (d.count('.2.') >= 1)
     def IsEvoRallySword(d):
         return ((sum(d.count(x) for x in ["Kagemitsu, Lost Samurai", "Taketsumi, Aconite Paladin", "Monochrome Endgame", "Musketeers' Vow"]) >= 8) & (sum(d.count(x) for x in ["Royal Fortress"]) <= 1))
+    def IsQuickbladerSword(d):
+        return ((sum(d.count(x) for x in ["Bumpkin Recruit", "Penguin Guardian", "Brave Vanguard", "Suave Bandit", "Wayfaring Goblin"]) >= 8) & (sum(d.count(x) for x in ["Swiftspeed Quickblader"]) >= 2) & (sum(d.count(x) for x in ["Golden Warrior", "Forge Weaponry", "Angel's Grace"]) >= 4))
+    def IsCoinSword(d):
+        return ((sum(d.count(x) for x in ("Jiemon, Thief Lord", "Masterful Musician", "Front Desk Frog", "Night on the Town")) >= 5) | (sum(d.count(x) for x in ("Jiemon, Thief Lord", "Swiftspeed Quickblader")) >= 4))
     def IsCommanderSword(d):
         return ((sum(d.count(x) for x in ["Royal Fortress"]) >= 2) & (sum(d.count(x) for x in ("Kitty Sergeant", "Luminous Lancer", "Resplendent Knight", "Radiant Luminous Mage")) >= 8))
     def IsHeroicSword(d):
@@ -37,10 +41,14 @@ def DeckSearch(d):
         x = "OTHER SWORD"
         if IsEvoRallySword(d):
             x = "Evo-Rally Sword"
+        if IsQuickbladerSword(d):
+            x = "Quickblader Sword"
+        if CoinSword(d):
+            x = "Coin Sword"
         if IsCommanderSword(d):
             x = "Commander Sword"
         if IsHeroicSword(d):
-            x = "HeroiC Sword"
+            x = "Heroic Sword"
         if IsMjerrabaine(d):
             x = "Jerry Sword"
     
@@ -63,7 +71,7 @@ def DeckSearch(d):
         if IsSpellboostRune(d):
             x = "Spellboost Rune"
         if IsYukishimaRune(d):
-            x = "Spellboost Rune"
+            x = "Yukishima Rune"
         if IsChessRune(d):
             x = "Chess Rune"
         if IsMjerrabaine(d):
@@ -75,7 +83,7 @@ def DeckSearch(d):
     def IsArmedDragon(d):
         return ((sum(d.count(x) for x in ("Draconic Armor", "Draconir, Knuckle Dragon", "Hammer Dragonewt", "Lance Lizard")) >= 7))
     def IsControlDragon(d):
-        return (sum(d.count(x) for x in ("Terra Finis", "Ultimate Bahamut", "Gilnelise, Ravenous Craving")) >= 5)
+        return (sum(d.count(x) for x in ("Terra Finis", "Ultimate Bahamut", "Gilnelise, Ravenous Craving", "Si Long, Draconic God-Queen")) >= 7)
 
     if IsDragon(d):
         x = "OTHER DRAGON"
@@ -93,6 +101,8 @@ def DeckSearch(d):
         return (sum(d.count(x) for x in ["Skeleton Raider", "Flame and Glass, Duality", "Suzy, Hexcaster", "Rulenye, Screaming Silence", "Spirit Invasion"]) >= 8)
     def IsLWShadow(d):
         return (sum(d.count(x) for x in ["Cerberus, Infernal Hound", "Deathcat Reaper", "Mino, Daydreaming Reaper", "Huginn & Muninn", "Thunder God of the Tempest"]) >= 8) & (sum(d.count(x) for x in ["Flame and Glass, Duality"]) <= 0)
+    def IsHybridShadow(d):
+        return (sum(d.count(x) for x in ["Cerberus, Infernal Hound", "Masquerade Ghost", "Skeleton Raider", "Huginn & Muninn", "Baccherus, Peppy Ghostie"]) >= 10)
     
     if IsShadow(d):
         x = "OTHER SHADOW"
@@ -100,6 +110,8 @@ def DeckSearch(d):
             x = "F&G Shadow"
         if IsLWShadow(d):
             x = "LW Shadow"
+        if IsHybridShadow(d):
+            x = "Hybrid Shadow"
         if IsMjerrabaine(d):
             x = "Jerry Shadow"
     
@@ -127,12 +139,15 @@ def DeckSearch(d):
     ## Havencraft
     def IsHaven(d):
         return (d.count('.7.') >= 1)
+    def IsCrystaliseHaven(d):
+        return (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) >= 8)
     def IsWardHaven(d):
         return (sum(d.count(x) for x in ("Holy Saber", "Teena, Sacred Sister", "Wilbert, Luminous Paladin", "Zeno, Paradoxical Shield", "Temple Healer")) >= 8)
     def IsHealHaven(d):
         return (sum(d.count(x) for x in ("Bellerophon", "Sacred Ice-Crusher", "Perpetual Despair")) >= 6)
-    def IsCrystaliseHaven(d):
-        return (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) >= 8)
+    def IsControlHaven(d):
+        return (sum(d.count(x) for x in ("Sacred Ice-Crusher", "Perpetual Despair", "Terra Finis", "Ultimate Bahamut", "Greater Will")) >= 8)
+    
 
     if IsHaven(d):
         x = "OTHER HAVEN"
@@ -142,6 +157,8 @@ def DeckSearch(d):
             x = "Ward Haven"
         if IsHealHaven(d):
             x = "Heal Haven"
+        if IsControlHaven(d):
+            x = "Control Haven"
         if IsMjerrabaine(d):
             x = "Jerry Haven"
     
