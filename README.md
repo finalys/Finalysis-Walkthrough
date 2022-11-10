@@ -15,7 +15,7 @@ As this is my very first public repo, I will try my best to pick up good habits 
 
 Again, I reiterate that I still consider myself a beginner so if there are any improvements/suggestions please feel free to let me know! 
 
-Contact me via Discord: **Finalys#7064**
+Contact me via Discord **Finalys#7064** and do follow me on [Twitter](https://twitter.com/_finalys_)!!
 
 ## Coverage
 
@@ -34,7 +34,15 @@ Contact me via Discord: **Finalys#7064**
 - Matchup analysis
 - Export file to Excel
 
+**SVO Analysis**
+- *Files:* `SVOAnalysis.ipynb`, `DeckClassify.py`
+- Identify the deck archetypes brought by players & descriptive statistics
+- Breakdown of each deck brought by players
+
 ## Changelog
+>V1.4:
+>- Added `SVOAnalysis.ipynb`.
+>- Updated `DeckClassify.py` for identification housekeeping.
 
 >V1.3.1:
 >- Updated `SVCardInfo.xlsx` for **Celestial Dragonblade** [Genesis Artifact nerf](https://shadowverse.com/news/?announce_id=2451)

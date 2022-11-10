@@ -10,15 +10,15 @@ def DeckSearch(d):
     def IsForest(d):
         return (d.count('.1.') >= 1)
     def IsControlForest(d):
-        return (sum(d.count(x) for x in ["Carbuncle, Sacred Emerald", "Piercye, Queen of Frost", "Yggdrasil, Root of Life"]) >= 6) & (sum(d.count(x) for x in ["Nobilis, Sable-Lily Queen", "Forest Merchant"]) <= 1)
+        return (sum(d.count(x) for x in ['Adherent of Annihilation', 'Carbuncle, Sacred Emerald', 'Erosive Annihilation', 'Cosmos Fang', 'Ultimate Bahamut', 'Yggdrasil, Root of Life']) >= 7)
     def IsFairyForest(d):
-        return (sum(d.count(x) for x in ["Nobilis, Sable-Lily Queen", "Phantombloom Predator", "Aqua Fairy", "Flying Mistletoe Squirrel", "Forest Merchant", "Tam Lin, Fey Knight"]) >= 10) & (sum(d.count(x) for x in ["Piercye, Queen of Frost", "Carbuncle, Sacred Emerald"]) <= 0)
+        return (sum(d.count(x) for x in ["Nobilis, Sable-Lily Queen", "Phantombloom Predator", "Aqua Fairy", "Flying Mistletoe Squirrel", "Forest Merchant", "Tam Lin, Fey Knight"]) >= 10)
     
     if IsForest(d):
         x = "OTHER FOREST"
         if IsControlForest(d):
             x = "Control Forest"
-        if IsAggroForest(d):
+        if IsFairyForest(d):
             x = "Fairy Forest"
         if IsMjerrabaine(d):
             x = "Jerry Forest"
@@ -34,8 +34,6 @@ def DeckSearch(d):
         return ((sum(d.count(x) for x in ("Jiemon, Thief Lord", "Masterful Musician", "Front Desk Frog", "Night on the Town")) >= 5) | (sum(d.count(x) for x in ("Jiemon, Thief Lord", "Swiftspeed Quickblader")) >= 4))
     def IsCommanderSword(d):
         return ((sum(d.count(x) for x in ["Royal Fortress"]) >= 2) & (sum(d.count(x) for x in ("Kitty Sergeant", "Luminous Lancer", "Resplendent Knight", "Radiant Luminous Mage")) >= 8))
-    def IsHeroicSword(d):
-        return ((sum(d.count(x) for x in ("Amerro, Spear Knight", "Heroic Entry", "Valiant Fencer", "Mach Knight", "Flame Soldier")) >= 8))
     
     if IsSword(d):
         x = "OTHER SWORD"
@@ -43,12 +41,10 @@ def DeckSearch(d):
             x = "Evo-Rally Sword"
         if IsQuickbladerSword(d):
             x = "Quickblader Sword"
-        if CoinSword(d):
+        if IsCoinSword(d):
             x = "Coin Sword"
         if IsCommanderSword(d):
             x = "Commander Sword"
-        if IsHeroicSword(d):
-            x = "Heroic Sword"
         if IsMjerrabaine(d):
             x = "Jerry Sword"
     
@@ -59,8 +55,6 @@ def DeckSearch(d):
         return (sum(d.count(x) for x in ("Acid Golem", "Superior Contractor", "Forbidden Archives Warden", "Juno, Atelier Alchemist", "Levi, Sapience Supreme", "Covetous Witch")) >= 10)
     def IsSpellboostRune(d):
         return ((sum(d.count(x) for x in ("Chakram Wizard", "Kuon, Wuxing Master", "Meltina, Miracle Sorceress")) >= 8))
-    def IsYukishimaRune(d):
-        return ((sum(d.count(x) for x in ["Yukishima, Master Biographer"]) >= 2) & (sum(d.count(x) for x in ["Orchestral Mage", "Superior Contractor"]) >= 2) & (sum(d.count(x) for x in ["Acid Golem", "Kuon, Wuxing Master", "Meltina, Miracle Sorceress", "Magical Strategy", "Milady, Mystic Queen", "Mystic King"]) <= 1))
     def IsChessRune(d):
         return ((sum(d.count(x) for x in ["Magical Knight", "Magical Rook", "Magical Strategy", "Milady, Mystic Queen", "Mystic King"]) >= 8))
     
@@ -70,8 +64,6 @@ def DeckSearch(d):
             x = "Dirt Rune"
         if IsSpellboostRune(d):
             x = "Spellboost Rune"
-        if IsYukishimaRune(d):
-            x = "Yukishima Rune"
         if IsChessRune(d):
             x = "Chess Rune"
         if IsMjerrabaine(d):
@@ -143,11 +135,8 @@ def DeckSearch(d):
         return (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) >= 8)
     def IsWardHaven(d):
         return (sum(d.count(x) for x in ("Holy Saber", "Teena, Sacred Sister", "Wilbert, Luminous Paladin", "Zeno, Paradoxical Shield", "Temple Healer")) >= 8)
-    def IsHealHaven(d):
-        return (sum(d.count(x) for x in ("Bellerophon", "Sacred Ice-Crusher", "Perpetual Despair")) >= 6)
     def IsControlHaven(d):
-        return (sum(d.count(x) for x in ("Sacred Ice-Crusher", "Perpetual Despair", "Terra Finis", "Ultimate Bahamut", "Greater Will")) >= 8)
-    
+        return (sum(d.count(x) for x in ("Sacred Ice-Crusher", "Perpetual Despair", "Terra Finis", "Ultimate Bahamut", "Greater Will")) >= 8 & (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) <= 1))
 
     if IsHaven(d):
         x = "OTHER HAVEN"
@@ -155,8 +144,6 @@ def DeckSearch(d):
             x = "Crystalise Haven"
         if IsWardHaven(d):
             x = "Ward Haven"
-        if IsHealHaven(d):
-            x = "Heal Haven"
         if IsControlHaven(d):
             x = "Control Haven"
         if IsMjerrabaine(d):
