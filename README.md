@@ -40,6 +40,9 @@ Contact me via Discord **Finalys#7064** and do follow me on [Twitter](https://tw
 - Breakdown of each deck brought by players
 
 ## Changelog
+>V1.5:
+>- Updated `SVCardInfo.xlsx` for [**Eightfold Abyss: Azvaldt**](https://shadowverse.com/news/?announce_id=2532)
+
 >V1.4:
 >- Added `SVOAnalysis.ipynb`.
 >- Updated `DeckClassify.py` for identification housekeeping.
