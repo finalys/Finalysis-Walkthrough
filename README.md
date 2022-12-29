@@ -1,6 +1,6 @@
 # Finalysis Walkthrough
 
-**Note: If the notebook is taking too long to render on github,  head to https://nbviewer.org/ and paste the link.**
+**Note: If the notebook is taking too long to render on github,  head to https://nbviewer.org/github/finalys/Finalysis-Walkthrough/tree/main/.**
 
 ## Introduction & History
 Hi, I'm Finalys. You may know me as the author of Finalysis which started in 2020 as a personal project to learn about python. 
