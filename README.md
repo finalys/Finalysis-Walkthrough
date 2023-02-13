@@ -40,6 +40,10 @@ Contact me via Discord **Finalys#7064** and do follow me on [Twitter](https://tw
 - Breakdown of each deck brought by players
 
 ## Changelog
+>V1.5.2:
+>- SVO Analysis using battlefy and Zhiff's data in `SVOAnalysis.ipynb`
+>- Minor housekeeping
+
 >V1.5.1:
 >- Error fix for `JCGAnalysis.ipynb` for BYE situations.
 
