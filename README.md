@@ -42,7 +42,7 @@ Contact me via Discord **Finalys#7064** and do follow me on [Twitter](https://tw
 ## Changelog
 >V1.5.2:
 >- SVO Analysis using battlefy and Zhiff's data in `SVOAnalysis.ipynb`
->- Minor housekeeping
+>- Minor housekeeping, including [**Eightfold Abyss: Azvaldt** Mini-Expansion](https://shadowverse.com/news/?announce_id=2570)
 
 >V1.5.1:
 >- Error fix for `JCGAnalysis.ipynb` for BYE situations.
