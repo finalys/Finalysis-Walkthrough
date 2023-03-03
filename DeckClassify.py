@@ -1,6 +1,7 @@
 ## Function to determine deck archetype. Takes in Deck_URL after replacing cardhash with card names.
-def DeckSearch(d):
+def DeckSearch(d, mode = 1):
     x = "" ## Target string container to replace sequentially
+    y = [] ## Checking purposes to detect classifications
     
     ## Neutral Identifiers
     def IsMjerrabaine(d):
@@ -18,14 +19,19 @@ def DeckSearch(d):
     
     if IsForest(d):
         x = "OTHER FOREST"
+        y.append(x)
         if IsHozumiForest(d):
             x = "Hozumi Forest"
+            y.append(x)
         if IsCondemnedForest(d):
             x = "Condemned Forest"
+            y.append(x)
         if IsFairyForest(d):
             x = 'Fairy Forest'
+            y.append(x)
         if IsMjerrabaine(d):
             x = "Jerry Forest"
+            y.append(x)
     
     ## Swordcraft
     def IsSword(d):
@@ -40,12 +46,16 @@ def DeckSearch(d):
     
     if IsSword(d):
         x = "OTHER SWORD"
+        y.append(x)
         if IsLootSword(d):
             x = "Loot Sword"
+            y.append(x)
         if IsHeroicSword(d):
             x = "Heroic Sword"
+            y.append(x)
         if IsCommanderSword(d):
             x = "Commander Sword"
+            y.append(x)
 
     
     ## Runecraft
@@ -65,14 +75,19 @@ def DeckSearch(d):
     
     if IsRune(d):
         x = "OTHER RUNE"
+        y.append(x)
         if IsSevenForcesRune(d):
             x = "SevenForces Rune"
+            y.append(x)
         if IsSpellboostRune(d):
             x = "Spellboost Rune"
+            y.append(x)
         if IsChessRune(d):
             x = "Chess Rune"
+            y.append(x)
         if IsTestSubjectRune(d):
             x = "TestSubject Rune"
+            y.append(x)
 
     ## Dragoncraft
     def IsDragon(d):
@@ -88,16 +103,22 @@ def DeckSearch(d):
 
     if IsDragon(d):
         x = "OTHER DRAGON"
+        y.append(x)
         if IsDiscardDragon(d):
             x = "Discard Dragon"
+            y.append(x)
         if IsArmedDragon(d):
             x = "Armed Dragon"
+            y.append(x)
         if IsDiscardDragon(d) & IsArmedDragon(d):
             x = "DisArm Dragon"
+            y.append(x)
         if IsBahamutDragon(d):
             x = "Bahamut Dragon"
+            y.append(x)
         if IsMjerrabaine(d):
             x = "Jerry Dragon"
+            y.append(x)
     
     ## Shadowcraft
     def IsShadow(d):
@@ -111,12 +132,16 @@ def DeckSearch(d):
     
     if IsShadow(d):
         x = "OTHER SHADOW"
+        y.append(x)
         if IsLWShadow(d):
             x = "LW Shadow"
+            y.append(x)
         if IsGhostShadow(d):
             x = "Ghost Shadow"
+            y.append(x)
         if IsMjerrabaine(d):
             x = "Jerry Shadow"
+            y.append(x)
     
     ## Bloodcraft
     def IsBlood(d):
@@ -130,14 +155,19 @@ def DeckSearch(d):
     
     if IsBlood(d):
         x = "OTHER BLOOD"
+        y.append(x)
         if IsWrathBlood(d):
             x = "Wrath Blood"
+            y.append(x)
         if IsHandlessBlood(d):
             x = "Handless Blood"
+            y.append(x)
         if IsEvoBlood(d):
             x = "Evo Blood"
+            y.append(x)
         if IsMjerrabaine(d):
             x = "Jerry Blood"
+            y.append(x)
 
     ## Havencraft
     def IsHaven(d):
@@ -150,12 +180,16 @@ def DeckSearch(d):
 
     if IsHaven(d):
         x = "OTHER HAVEN"
+        y.append(x)
         if IsCrystaliseHaven(d):
             x = "Crystalise Haven"
+            y.append(x)
         if IsControlHaven(d):
             x = "Control Haven"
+            y.append(x)
         if IsMjerrabaine(d):
             x = "Jerry Haven"
+            y.append(x)
     
     ## Portalcraft
     def IsPortal(d):
@@ -172,13 +206,21 @@ def DeckSearch(d):
     
     if IsPortal(d):
         x = "OTHER PORTAL"
+        y.append(x)
         if IsPuppetPortal(d):
             x = "Puppet Portal"
+            y.append(x)
         if IsControlPortal(d):
             x = "Control Portal"
+            y.append(x)
         if IsEnhancePortal(d):
             x = "Enhance Portal"
+            y.append(x)
         if IsMjerrabaine(d):
             x = "Jerry Portal"
+            y.append(x)
 
-    return x
+    if mode == 1:
+        return x
+    if mode != 1:
+        return y
