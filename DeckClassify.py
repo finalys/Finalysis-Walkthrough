@@ -12,7 +12,9 @@ def DeckSearch(d):
     def IsHozumiForest(d):
         return (sum(d.count(x) for x in ["Hozumi, Enchanting Hostess", "Garuel, Seraphic Leo", "Freyja", "Ambitious Goblin Mage", "Tam Lin, Fey Knight"]) >= 7)
     def IsCondemnedForest(d):
-        return (sum(d.count(x) for x in ["Magachiyo, Barbed Convict"]) >= 3)
+        return (sum(d.count(x) for x in ["Magachiyo, Barbed Convict", "Verdant Lieutenant"]) >= 4)
+    def IsFairyForest(d):
+        return (sum(d.count(x) for x in ["Nobilis, Sable-Lily Queen", "Plumeria, Serene Goddess", "Shining Valkyrie"]) >= 6)
     
     if IsForest(d):
         x = "OTHER FOREST"
@@ -20,6 +22,8 @@ def DeckSearch(d):
             x = "Hozumi Forest"
         if IsCondemnedForest(d):
             x = "Condemned Forest"
+        if IsFairyForest(d):
+            x = 'Fairy Forest'
         if IsMjerrabaine(d):
             x = "Jerry Forest"
     
@@ -30,6 +34,8 @@ def DeckSearch(d):
         return (sum(d.count(x) for x in ["Tidal Gunner", "Barbaros, Briny Convict", "Deep-Sea Scout", "Storm-Wracked First Mate", "Octrice, Hollow Usurpation"]) >= 10)
     def IsHeroicSword(d):
         return (sum(d.count(x) for x in ["Mach Knight", "Heroic Entry", "Valiant Fencer", "Windslasher", "Flame Soldier"]) >= 8)
+    def IsCommanderSword(d):
+        return (sum(d.count(x) for x in ["Royal Fortress", "General Maximus", "Radiant Luminous Mage"]) >= 7)
 
     
     if IsSword(d):
@@ -38,21 +44,29 @@ def DeckSearch(d):
             x = "Loot Sword"
         if IsHeroicSword(d):
             x = "Heroic Sword"
+        if IsCommanderSword(d):
+            x = "Commander Sword"
 
     
     ## Runecraft
     def IsRune(d):
         return (d.count('.3.') >= 1)
+    def IsSevenForcesRune(d):
+        return (sum(d.count(x) for x in ["Sorcerer of Seven Forces"]) >= 2)
     def IsSpellboostRune(d):
         return ((sum(d.count(x) for x in ("Chakram Wizard", "Mari, Card Conjurer", "Meltina, Miracle Sorceress", "Simael, Cleansing Enforcer")) >= 8))
     def IsChessRune(d):
         return ((sum(d.count(x) for x in ["Magical Knight", "Magical Rook", "Magical Strategy", "Milady, Mystic Queen", "Mystic King", "Check"]) >= 8))
     def IsTestSubjectRune(d):
-        return ((sum(d.count(x) for x in ["Volunteer Test Subject", "Devoted Researcher", "Sephie, Depraved Convict", "Obsessive Scholar"]) >= 8)) & ((sum(d.count(x) for x in ["Mystic King", "Check"]) < 3)) & ((sum(d.count(x) for x in ["Chakram Wizard", "Mari, Card Conjurer", "Meltina, Miracle Sorceress"]) < 3))
+        return ((sum(d.count(x) for x in ["Volunteer Test Subject", "Devoted Researcher", "Sephie, Depraved Convict", "Obsessive Scholar"]) >= 8)) 
+                & ((sum(d.count(x) for x in ["Mystic King", "Check"]) < 3)) 
+                & ((sum(d.count(x) for x in ["Chakram Wizard", "Mari, Card Conjurer", "Meltina, Miracle Sorceress"]) < 3))
         
     
     if IsRune(d):
         x = "OTHER RUNE"
+        if IsSevenForcesRune(d):
+            x = "SevenForces Rune"
         if IsSpellboostRune(d):
             x = "Spellboost Rune"
         if IsChessRune(d):
@@ -67,8 +81,10 @@ def DeckSearch(d):
         return ((sum(d.count(x) for x in ["Augite Wyrm", "Argente, Purest Silver", "Dragonewt's Might", "Lumiore, Prestigious Gold", "Noir & Blanc, Brothers"]) >= 10))
     def IsArmedDragon(d):
         return ((sum(d.count(x) for x in ["Draconic Armor", "Draconir, Knuckle Dragon", "Hammer Dragonewt", "Lævateinn Dragon"]) >= 8))
-    def IsControlDragon(d):
-        return ((sum(d.count(x) for x in ["Drazael, Ravening Enforcer", "Ultimate Bahamut", "Si Long, Draconic God-Queen"]) >= 5)) & ((sum(d.count(x) for x in ["Lævateinn Dragon", "Draconir, Knuckle Dragon"]) < 3)) & ((sum(d.count(x) for x in ["Argente, Purest Silver", "Lumiore, Prestigious Gold"]) < 3))
+    def IsBahamutDragon(d):
+        return ((sum(d.count(x) for x in ["Drazael, Ravening Enforcer", "Ultimate Bahamut", "Si Long, Draconic God-Queen"]) >= 5)) 
+                & ((sum(d.count(x) for x in ["Lævateinn Dragon", "Draconir, Knuckle Dragon"]) < 3)) 
+                & ((sum(d.count(x) for x in ["Argente, Purest Silver", "Lumiore, Prestigious Gold"]) < 3))
 
     if IsDragon(d):
         x = "OTHER DRAGON"
@@ -76,8 +92,10 @@ def DeckSearch(d):
             x = "Discard Dragon"
         if IsArmedDragon(d):
             x = "Armed Dragon"
-        if IsControlDragon(d):
-            x = "Control Dragon"
+        if IsDiscardDragon(d) & IsArmedDragon(d):
+            x = "DisArm Dragon"
+        if IsBahamutDragon(d):
+            x = "Bahamut Dragon"
         if IsMjerrabaine(d):
             x = "Jerry Dragon"
     
@@ -85,9 +103,10 @@ def DeckSearch(d):
     def IsShadow(d):
         return (d.count('.5.') >= 1)
     def IsLWShadow(d):
-        return (sum(d.count(x) for x in ["Istyndet, Soul Convict", "Abyssal Colonel", "Chaotic Doom", "Thunder God of the Tempest", "Huginn & Muninn"]) >= 8)
+        return (sum(d.count(x) for x in ["Istyndet, Soul Convict", "Abyssal Colonel", "Cerberus, Infernal Hound", "Huginn & Muninn"]) >= 8)
     def IsGhostShadow(d):
-        return (sum(d.count(x) for x in ["Ghastly Banishment", "Masquerade Ghost", "Baccherus, Peppy Ghostie"]) >= 5) & (sum(d.count(x) for x in ["Abyssal Colonel", "Chaotic Doom", "Thunder God of the Tempest"]) < 3)
+        return ((sum(d.count(x) for x in ["Ghastly Banishment", "Masquerade Ghost", "Baccherus, Peppy Ghostie"]) >= 5) 
+                & (sum(d.count(x) for x in ["Abyssal Colonel", "Cerberus, Infernal Hound", "Istyndet, Soul Convict"]) < 4))
     
     
     if IsShadow(d):
@@ -103,9 +122,11 @@ def DeckSearch(d):
     def IsBlood(d):
         return (d.count('.6.') >= 1)
     def IsWrathBlood(d):
-        return (sum(d.count(x) for x in ["Garodeth, Insurgent Convict", "Howling Scream", "Raging Commander", "Demonic Drummer", "Demon Maestro"]) >= 8)
+        return (sum(d.count(x) for x in ["Garodeth, Insurgent Convict", "Howling Scream", "Raging Commander", "Scorching Grandiosity", "Howling Demon"]) >= 8)
     def IsHandlessBlood(d):
         return (sum(d.count(x) for x in ("Paracelise, Demon of Greed", "Room Service Demon", "Bat Usher", "Silvernail Blaster")) >= 10)
+    def IsEvoBlood(d):
+        return (sum(d.count(x) for x in ("Alice, Wandering Dreamer", "Dancing Mini Soul Devil", "Tevali, Demonic Cat", "Kali", "Signa, Sealed Madwolf")) >= 10)
     
     if IsBlood(d):
         x = "OTHER BLOOD"
@@ -113,6 +134,8 @@ def DeckSearch(d):
             x = "Wrath Blood"
         if IsHandlessBlood(d):
             x = "Handless Blood"
+        if IsEvoBlood(d):
+            x = "Evo Blood"
         if IsMjerrabaine(d):
             x = "Jerry Blood"
 
@@ -122,7 +145,8 @@ def DeckSearch(d):
     def IsCrystaliseHaven(d):
         return (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) >= 8)
     def IsControlHaven(d):
-        return (sum(d.count(x) for x in ("Sacred Ice-Crusher", "Perpetual Despair", "Bellerophon")) >= 5 & (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) <= 1))
+        return ((sum(d.count(x) for x in ("Sacred Ice-Crusher", "Perpetual Despair", "Bellerophon")) >= 5 
+                 & (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) <= 1)))
 
     if IsHaven(d):
         x = "OTHER HAVEN"
@@ -137,11 +161,14 @@ def DeckSearch(d):
     def IsPortal(d):
         return (d.count('.8.') >= 1)
     def IsPuppetPortal(d):
-        return (sum(d.count(x) for x in ["Young Threadmaster", "Craftsman's Pride", "Orchis, the Limitless", "Blossoming Flower Doll"]) >= 8)
+        return ((sum(d.count(x) for x in ["Young Threadmaster", "Craftsman's Pride", "Orchis, the Limitless", "Blossoming Flower Doll"]) >= 8)
+                & (sum(d.count(x) for x in ["Cutthroat, Discord Convict"]) < 2))
     def IsControlPortal(d):
-        return (sum(d.count(x) for x in ["Arc", "Shion, Immortal Aegis", "Summon Divine Treasure"]) >= 5) & (sum(d.count(x) for x in ["Orchis, the Limitless"]) < 2)
+        return ((sum(d.count(x) for x in ["Arc", "Shion, Immortal Aegis", "Summon Divine Treasure"]) >= 5) 
+                & (sum(d.count(x) for x in ["Orchis, the Limitless"]) < 2)
+                & (sum(d.count(x) for x in ["Cutthroat, Discord Convict"]) < 2))
     def IsEnhancePortal(d):
-        return (sum(d.count(x) for x in ["Kyrzael, Killshot Enforcer", "Cutthroat, Discord Convict", "Ironforged Right Hand"]) >= 5)
+        return (sum(d.count(x) for x in ["Cutthroat, Discord Convict", "Smeltwork Bodyguard", "Ironforged Right Hand", "Judith, Cosmic Observer"]) >= 7)
     
     if IsPortal(d):
         x = "OTHER PORTAL"
@@ -149,6 +176,8 @@ def DeckSearch(d):
             x = "Puppet Portal"
         if IsControlPortal(d):
             x = "Control Portal"
+        if IsEnhancePortal(d):
+            x = "Enhance Portal"
         if IsMjerrabaine(d):
             x = "Jerry Portal"
 
