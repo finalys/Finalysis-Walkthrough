@@ -95,7 +95,7 @@ def SVOExcelFormatter(svowriter, svoworkbook, input_filename):
     svoworksheet.set_column('K:K', col_widths["Count"]) ## Count
     svoworksheet.set_column('L:L', col_widths["%ofPlayers"], svoworkbook.add_format({'num_format': '0.00%'})) ## %ofPlayers
     merge_fmt = svoworkbook.add_format({'bold': 1, 'border': 1, 'align': 'center','valign': 'vcenter', 'font_size': 20})
-    svoworksheet.merge_range('A1:L1', f'{input_filename} Summary - {rawdf_2.shape[0]} Players', merge_fmt)
+    # svoworksheet.merge_range('A1:L1', f'{input_filename} Summary - {rawdf_2.shape[0]} Players', merge_fmt)
     
     
 def ExcelFormatter(jwriter, jworkbook):
