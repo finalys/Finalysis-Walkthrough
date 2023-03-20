@@ -26,6 +26,7 @@ Contact me via Discord **Finalys#7064** and do follow me on [Twitter](https://tw
 - Other utilities: Scraping image assets
     
 **JCG Analysis**
+*>>>Not updated currently*
 - *Files:* `JCGAnalysis.ipynb`, `DeckClassify.py`
 - Scraping from the JCG website
 - Cleaning and getting player information & decks
@@ -35,11 +36,16 @@ Contact me via Discord **Finalys#7064** and do follow me on [Twitter](https://tw
 - Export file to Excel
 
 **SVO Analysis**
-- *Files:* `SVOAnalysis.ipynb`, `DeckClassify.py`
+- *Files:* `SVOAnalysis.ipynb`, `DeckClassify.py`, `SVExcelFormatter.py`
 - Identify the deck archetypes brought by players & descriptive statistics
 - Breakdown of each deck brought by players
 
 ## Changelog
+>V1.6:
+>- Major rehaul on `SVOAnalysis.ipynb`, `SVExcelFormatter.py`. Introduced more reliance on battlefy data to pull customFields to reduce manual checks across players' decklist and information.
+>- Notebook visuals for `SVOAnalysis.ipynb` are removed, to be updated in the future.
+>- `SVExcelFormatter.py` is now a standalone python file rather than a chunk of code in both `SVOAnalysis.ipynb` and `JCGAnalysis.ipynb`.
+
 >V1.5.2:
 >- SVO Analysis using battlefy and Zhiff's data in `SVOAnalysis.ipynb`
 >- Minor housekeeping, including [**Eightfold Abyss: Azvaldt** Mini-Expansion](https://shadowverse.com/news/?announce_id=2570)

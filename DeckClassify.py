@@ -169,8 +169,8 @@ def DeckSearch(d, mode = 1):
         return (d.count('.7.') >= 1)
     def IsCrystaliseHaven(d):
         return (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) >= 8)
-    def IsControlHaven(d):
-        return ((sum(d.count(x) for x in ("Sacred Ice-Crusher", "Perpetual Despair", "Bellerophon")) >= 5  & (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) <= 1)))
+    # def IsControlHaven(d):
+    #     return ((sum(d.count(x) for x in ("Sacred Ice-Crusher", "Perpetual Despair", "Bellerophon")) >= 5  & (sum(d.count(x) for x in ("Wingy, Chirpy Gemstone", "Diamond Master", "Holy Lightning Bird", "Skullfane, the Defiled", "Emerald Maiden")) <= 1)))
 
     if IsHaven(d):
         x = "OTHER HAVEN"
@@ -178,9 +178,9 @@ def DeckSearch(d, mode = 1):
         if IsCrystaliseHaven(d):
             x = "Crystalise Haven"
             y.append(x)
-        if IsControlHaven(d):
-            x = "Control Haven"
-            y.append(x)
+        # if IsControlHaven(d):
+        #     x = "Control Haven"
+        #     y.append(x)
         if IsMjerrabaine(d):
             x = "Jerry Haven"
             y.append(x)
