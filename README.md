@@ -41,6 +41,9 @@ Contact me via Discord **Finalys#7064** and do follow me on [Twitter](https://tw
 - Breakdown of each deck brought by players
 
 ## Changelog
+>V1.6.1:
+>- Update for `DeckClassify.py` for  [Academy of Ages](https://shadowverse.com/news/?announce_id=2628). Introduced hybrid deck identifiers; if a deck fulfills multiple archetype identifiers, it will be classified as a hybrid of said archetypes instead of an overwrite.
+
 >V1.6:
 >- Major rehaul on `SVOAnalysis.ipynb`, `SVExcelFormatter.py`. Introduced more reliance on battlefy data to pull customFields to reduce manual checks across players' decklist and information.
 >- Notebook visuals for `SVOAnalysis.ipynb` are removed, to be updated in the future.
