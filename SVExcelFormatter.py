@@ -142,7 +142,7 @@ def SVOExcelFormatter(svowriter, svoworkbook, input_filename, df_5):
     merge_fmt = svoworkbook.add_format({'bold': 1, 'border': 1, 'align': 'center','valign': 'vcenter', 'font_size': 20})
     svoworksheet.write(0, 0, f'Matchup Summary - {df_5.shape[0]} matches & {df_5.P1_Games.sum() + df_5.P2_Games.sum():n} games played', merge_fmt)
     
-def ExcelFormatter(jwriter, jworkbook):
+def JCGExcelFormatter(jwriter, jworkbook, jcg_name):
     # 1. Set the color conditional formatting for classes and decks.
     greenFill = jworkbook.add_format({'bg_color': '#c6ffb3', 'font_color': '#000000'})
     yellowFill = jworkbook.add_format({'bg_color': '#ffffb3', 'font_color': '#000000'})

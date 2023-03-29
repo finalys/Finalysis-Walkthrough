@@ -10,11 +10,10 @@ def DeckSearch(d, mode = 1):
     def IsForest(d):
         return (d.count('.1.') >= 1)
     def IsFairyForest(d):
-        return (sum(d.count(x) for x in ["Nobilis, Sable-Lily Queen", "Plumeria, Serene Goddess", "Shining Valkyrie"]) >= 6)
+        return (sum(d.count(x) for x in ["Nobilis, Sable-Lily Queen", "Plumeria, Serene Goddess", "Shining Valkyrie", "Filly, Mythmaster"]) >= 6  & ((sum(d.count(x) for x in ["Aqua Fairy", "Flying Mistletoe Squirrel", "Guidance of the Wise", "Fauna Handler", "Fairy Funfact"]) >= 10)) )
     
     if IsForest(d):
         x = "OTHER FOREST"
-        y.append(x)
         if IsFairyForest(d):
             x = 'Fairy Forest'
             y.append(x)
@@ -29,13 +28,12 @@ def DeckSearch(d, mode = 1):
     def IsCommanderSword(d):
         return (sum(d.count(x) for x in ["Royal Fortress", "General Maximus", "Radiant Luminous Mage"]) >= 7)
     def IsHeroicSword(d):
-        return (sum(d.count(x) for x in ["Mach Knight", "Heroic Entry", "Valiant Fencer", "Windslasher", "Flame Soldier"]) >= 8)
+        return (sum(d.count(x) for x in ["Flame Soldier", "Amerro, Spear Knight", "Mach Knight", "Ironwrought Defender", "Windslasher"]) >= 10)
     def IsCommanderSword(d):
         return (sum(d.count(x) for x in ["Royal Fortress", "General Maximus", "Warden of Honor", "Lecia & Nano, Twilight Trainees"]) >= 9)
 
     if IsSword(d):
         x = "OTHER SWORD"
-        y.append(x)
         if IsMarsSword(d):
             x = "Mars Sword"
             y.append(x)
@@ -48,8 +46,6 @@ def DeckSearch(d, mode = 1):
         if IsCommanderSword(d):
             x = "Commander Sword"
             y.append(x)
-        
-
     
     ## Runecraft
     def IsRune(d):
@@ -57,18 +53,16 @@ def DeckSearch(d, mode = 1):
     def IsSevenForcesRune(d):
         return (sum(d.count(x) for x in ["Sorcerer of Seven Forces"]) >= 2)
     def IsMysteriaRune(d):
-        return ((sum(d.count(x) for x in ["Grea, Crimson Promise", "Anne, Brilliant Mage", "Mysteria, Magic Originator", "Craig, Mysterian Chanter", "Anne & Grea, Royal Duo"]) >= 10))
+        return ((sum(d.count(x) for x in ["Grea, Crimson Promise", "Anne, Brilliant Mage", "Mysteria, Magic Originator", "Craig, Mysterian Chanter", "Anne & Grea, Royal Duo", "Hanna, Mysterian Maid", "Mysterian Exchange Party", "Arcane Instruction"]) >= 15))
     def IsSpellboostRune(d):
         return ((sum(d.count(x) for x in ["Chakram Wizard", "Crushing Rain", "It's Raining Blades!", "Simael, Cleansing Enforcer"]) >= 8))
     def IsChessRune(d):
         return ((sum(d.count(x) for x in ["Magical Knight", "Magical Rook", "Magical Strategy", "Milady, Mystic Queen", "Mystic King", "Check"]) >= 8))
     def IsTestSubjectRune(d):
         return ((sum(d.count(x) for x in ["Volunteer Test Subject", "Devoted Researcher", "Sephie, Depraved Convict", "Obsessive Scholar"]) >= 8)) & ((sum(d.count(x) for x in ["Mystic King", "Check"]) < 3)) & ((sum(d.count(x) for x in ["Chakram Wizard", "Mari, Card Conjurer", "Meltina, Miracle Sorceress"]) < 3))
-        
     
     if IsRune(d):
         x = "OTHER RUNE"
-        y.append(x)
         if IsSevenForcesRune(d):
             x = "SevenForces Rune"
             y.append(x)
@@ -95,10 +89,8 @@ def DeckSearch(d, mode = 1):
     def IsBuffDragon(d):
         return ((sum(d.count(x) for x in ["Gunbein, Lofty Dragonewt", "Grand Slam Tamer", "Coach Joe, Fiery Counselor", "Dragonborn Striker"]) >= 8))
 
-
     if IsDragon(d):
         x = "OTHER DRAGON"
-        y.append(x)
         if IsDiscardDragon(d):
             x = "Discard Dragon"
             y.append(x)
@@ -113,18 +105,16 @@ def DeckSearch(d, mode = 1):
     def IsShadow(d):
         return (d.count('.5.') >= 1)
     def IsLastWordsShadow(d):
-        return (sum(d.count(x) for x in ["Istyndet, Soul Convict", "Abyssal Colonel", "Cerberus, Infernal Hound", "Huginn & Muninn"]) >= 8)
+        return (sum(d.count(x) for x in ["Istyndet, Soul Convict", "Abyssal Colonel", "Cerberus, Infernal Hound", "Huginn & Muninn"]) >= 10)
     def IsBurialRiteShadow(d):
         return (sum(d.count(x) for x in ["Lakandula, Purgatory Inn", "Septic Shrink", "Memento, the Grim Teacher", "Inn Ghosthound", "Call of the Great Arm", "Sweetsoul Necromancer"]) >= 12)
     def IsGhostShadow(d):
-        return ((sum(d.count(x) for x in ["Ghastly Banishment", "Masquerade Ghost", "Baccherus, Peppy Ghostie"]) >= 5))
+        return ((sum(d.count(x) for x in ["Ghastly Banishment", "Masquerade Ghost"]) >= 5))
     def IsReanimateShadow(d):
         return ((sum(d.count(x) for x in ["Mordecai, Unending Duelist", "Ceridwen, Eternal Duality", "Charon, Stygian Demise"]) >= 5))
     
-    
     if IsShadow(d):
         x = "OTHER SHADOW"
-        y.append(x)
         if IsLastWordsShadow(d):
             x = "LastWords Shadow"
             y.append(x)
@@ -152,7 +142,6 @@ def DeckSearch(d, mode = 1):
     
     if IsBlood(d):
         x = "OTHER BLOOD"
-        y.append(x)
         if IsWrathBlood(d):
             x = "Wrath Blood"
             y.append(x)
@@ -176,7 +165,6 @@ def DeckSearch(d, mode = 1):
 
     if IsHaven(d):
         x = "OTHER HAVEN"
-        y.append(x)
         if IsCrystaliseHaven(d):
             x = "Crystalise Haven"
             y.append(x)
@@ -196,7 +184,6 @@ def DeckSearch(d, mode = 1):
     
     if IsPortal(d):
         x = "OTHER PORTAL"
-        y.append(x)
         if IsPuppetPortal(d):
             x = "Puppet Portal"
             y.append(x)
@@ -207,6 +194,10 @@ def DeckSearch(d, mode = 1):
             x = "Enhance Portal"
             y.append(x)
 
+    ## Flag for OTHER, append to output list if no archetypes are identified
+    if len(y) == 0:
+        y.append(x)
+    
     ## Append all satisfying archetypes into hybrid deck
     for i, d in enumerate(y):
         if i == len(y) - 1:
