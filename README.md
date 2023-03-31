@@ -24,10 +24,10 @@ Contact me via Discord **Finalys#7064** and do follow me on [Twitter](https://tw
 - Retrieving useful information for shadowverse-portal
 - Cleaning the information
 - Other utilities: Scraping image assets
+- Output: `SVCardInfo.xlsx`
     
 **JCG Analysis**
-*>>>Not updated currently*
-- *Files:* `JCGAnalysis.ipynb`, `DeckClassify.py`
+- *Files:* `JCGAnalysis.ipynb`, `DeckClassify.py`, `SVExcelFormatter.py`
 - Scraping from the JCG website
 - Cleaning and getting player information & decks
 - Identify the deck archetypes brought by players & descriptive statistics
@@ -41,6 +41,10 @@ Contact me via Discord **Finalys#7064** and do follow me on [Twitter](https://tw
 - Breakdown of each deck brought by players
 
 ## Changelog
+>V1.6.2
+>- Update for [Academy of Ages (v4.1.1 nerfs)](https://shadowverse.com/news/?announce_id=2642)
+>- Update for `JCGAnalysis.ipynb` 
+
 >V1.6.1:
 >- Update for `DeckClassify.py` for  [Academy of Ages](https://shadowverse.com/news/?announce_id=2628). Introduced hybrid deck identifiers; if a deck fulfills multiple archetype identifiers, it will be classified as a hybrid of said archetypes instead of an overwrite.
 
