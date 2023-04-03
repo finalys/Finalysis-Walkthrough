@@ -25,12 +25,12 @@ def DeckSearch(d, mode = 1):
         return (sum(d.count(x) for x in ["Mars, Belligerent Flame"]) >= 3)
     def IsLootSword(d):
         return (sum(d.count(x) for x in ["Tidal Gunner", "Barbaros, Briny Convict", "Deep-Sea Scout", "Storm-Wracked First Mate"]) >= 8)
-    def IsCommanderSword(d):
-        return (sum(d.count(x) for x in ["Royal Fortress", "General Maximus", "Radiant Luminous Mage"]) >= 7)
+    def IsAcademicSword(d):
+        return (sum(d.count(x) for x in ["Weiss, Discerning Professor", 'Galdr, Heroic Headmaster', 'Lecia & Nano, Twilight Trainees', 'Lucius, Travelled Trainer']) >= 7)
     def IsHeroicSword(d):
         return (sum(d.count(x) for x in ["Flame Soldier", "Amerro, Spear Knight", "Mach Knight", "Ironwrought Defender", "Windslasher"]) >= 10)
     def IsCommanderSword(d):
-        return (sum(d.count(x) for x in ["Royal Fortress", "General Maximus", "Warden of Honor", "Lecia & Nano, Twilight Trainees"]) >= 9)
+        return (sum(d.count(x) for x in ["Royal Fortress", "General Maximus", "Warden of Honor", "Radiant Luminous Mage"]) >= 9)
 
     if IsSword(d):
         x = "OTHER SWORD"
@@ -39,6 +39,9 @@ def DeckSearch(d, mode = 1):
             y.append(x)
         if IsLootSword(d):
             x = "Loot Sword"
+            y.append(x)
+        if IsAcademicSword(d):
+            x = "Academic Sword"
             y.append(x)
         if IsHeroicSword(d):
             x = "Heroic Sword"
@@ -88,6 +91,8 @@ def DeckSearch(d, mode = 1):
         return ((sum(d.count(x) for x in ["Draconic Armor", "Draconir, Knuckle Dragon", "Hammer Dragonewt", "Lævateinn Dragon"]) >= 8))
     def IsBuffDragon(d):
         return ((sum(d.count(x) for x in ["Gunbein, Lofty Dragonewt", "Grand Slam Tamer", "Coach Joe, Fiery Counselor", "Dragonborn Striker"]) >= 8))
+    def IsBahamutDragon(d):
+        return ((sum(d.count(x) for x in ["Terra Finis", "Olivia & Sylvia, Wardens", "Drazael, Ravening Enforcer", "Si Long, Draconic God-Queen"]) >= 8) & (sum(d.count(x) for x in ["Ultimate Bahamut"]) >= 2))
 
     if IsDragon(d):
         x = "OTHER DRAGON"
@@ -99,6 +104,9 @@ def DeckSearch(d, mode = 1):
             y.append(x)
         if IsBuffDragon(d):
             x = "Buff Dragon"
+            y.append(x)
+        if IsBahamutDragon(d):
+            x = "Bahamut Dragon"
             y.append(x)
     
     ## Shadowcraft
