@@ -219,3 +219,77 @@ def JCGExcelFormatter(jwriter, jworkbook, jcg_name):
     jworksheet.set_column('K:K', col_widths["Lineup"]) ## Lineup
     jworksheet.set_column('H:H', col_widths["%ofPlayers"], jworkbook.add_format({'num_format': '0.00%'})) ## %
     jworksheet.set_column('Q:Q', col_widths["%ofPlayers"], jworkbook.add_format({'num_format': '0.00%'})) ## %
+    
+def BattlefyExcelFormatter(svowriter, svoworkbook, input_filename):
+    # 1. Set the color conditional formatting for classes and decks.
+    greenFill = svoworkbook.add_format({'bg_color': '#c6ffb3', 'font_color': '#000000'})
+    yellowFill = svoworkbook.add_format({'bg_color': '#ffffb3', 'font_color': '#000000'})
+    blueFill = svoworkbook.add_format({'bg_color': '#b3d9ff', 'font_color': '#000000'})
+    orangeFill = svoworkbook.add_format({'bg_color': '#ffd9b3', 'font_color': '#000000'})
+    purpleFill = svoworkbook.add_format({'bg_color': '#ecb3ff', 'font_color': '#000000'})
+    redFill = svoworkbook.add_format({'bg_color': '#ffb3b3', 'font_color': '#000000'})
+    greyFill = svoworkbook.add_format({'bg_color': '#e6e6e6', 'font_color': '#000000'})
+    tealFill = svoworkbook.add_format({'bg_color': '#b3ffff', 'font_color': '#000000'})
+    def ConditionFormatter(worksheet, lookuprange):
+        worksheet.conditional_format(lookuprange, {'type': 'text', 'criteria': 'containing', 'value': 'Forest', 'format': greenFill})
+        worksheet.conditional_format(lookuprange, {'type': 'text', 'criteria': 'containing', 'value': 'Sword', 'format': yellowFill})
+        worksheet.conditional_format(lookuprange, {'type': 'text', 'criteria': 'containing', 'value': 'Rune', 'format': blueFill})
+        worksheet.conditional_format(lookuprange, {'type': 'text', 'criteria': 'containing', 'value': 'Dragon', 'format': orangeFill})
+        worksheet.conditional_format(lookuprange, {'type': 'text', 'criteria': 'containing', 'value': 'Shadow', 'format': purpleFill})
+        worksheet.conditional_format(lookuprange, {'type': 'text', 'criteria': 'containing', 'value': 'Blood', 'format': redFill})
+        worksheet.conditional_format(lookuprange, {'type': 'text', 'criteria': 'containing', 'value': 'Haven', 'format': greyFill})
+        worksheet.conditional_format(lookuprange, {'type': 'text', 'criteria': 'containing', 'value': 'Portal', 'format': tealFill})
+        
+    # 2. Set active sheet and format accordingly.
+    col_widths = {"Name": 20, 
+                  "Player ID": 11,
+                  "Deck_URL": 11,
+                  "Deck": 20,
+                  "Lineup": 55,
+                  "C_Lineup": 38,
+                  "Pos": 4,
+                  "Count": 6,
+                  "%ofPlayers": 10,
+                  "Class": 18,
+                  "Swiss Wins": 11,
+                  "Xrounds": 16,
+                  "outRound": 10,
+                  "Xcount": 10,
+                  "DecayLU": 20}
+    
+    svoworksheet = svowriter.sheets["Wide"]
+    svoworksheet.set_column('A:A', col_widths["Name"]) ## Name
+    svoworksheet.set_column('B:B', col_widths["Player ID"]) ## Player ID
+    svoworksheet.set_column('C:E', col_widths["Deck_URL"]) ## Deck_URL 
+    ConditionFormatter(svoworksheet, 'F1:H999') ## Deck 
+    svoworksheet.set_column('F:H', col_widths["Deck"]) ## Deck 
+    svoworksheet.set_column('I:I', col_widths["Lineup"]) ## Lineup 
+    svoworksheet.set_column('J:J', col_widths["C_Lineup"]) ## C_Lineup
+    svoworksheet.set_column('K:K', col_widths["Swiss Wins"]) ## Swiss Wins
+
+    svoworksheet = svowriter.sheets["Tall"]
+    svoworksheet.set_column('B:B', col_widths["Name"]) ## Name
+    svoworksheet.set_column('A:A', col_widths["Player ID"]) ## Player ID
+    svoworksheet.set_column('C:C', col_widths["Deck_URL"]) ## Deck_URL 
+    ConditionFormatter(svoworksheet, 'D1:E999') ## Deck, Class
+    svoworksheet.set_column('D:D', col_widths["Deck"]) ## Deck 
+    svoworksheet.set_column('E:E', col_widths["Class"]) ## Class 
+    # svoworksheet.set_column('F:F', col_widths["Pos"]) ## Pos
+    
+    svoworksheet = svowriter.sheets["Summary"]
+    svoworksheet.set_column('A:A', col_widths["Deck"]) ## Deck 
+    svoworksheet.set_column('B:B', col_widths["Class"]) ## Class 
+    ConditionFormatter(svoworksheet, 'A2:B999') ## Deck, Class
+    svoworksheet.set_column('C:C', col_widths["Count"]) ## Count
+    svoworksheet.set_column('D:D', col_widths["%ofPlayers"], svoworkbook.add_format({'num_format': '0.00%'})) ## %ofPlayers 
+    svoworksheet.set_column('E:E', 1) ## BLANK 
+    svoworksheet.set_column('F:F', col_widths["Lineup"]) ## Lineup
+    svoworksheet.set_column('G:G', col_widths["Count"]) ## Count
+    svoworksheet.set_column('H:H', 10, svoworkbook.add_format({'num_format': '0.00%'})) ## %ofPlayers
+    svoworksheet.set_column('I:I', 1) ## BLANK 
+    svoworksheet.set_column('J:J', col_widths["C_Lineup"]) ## C_Lineup
+    svoworksheet.set_column('K:K', col_widths["Count"]) ## Count
+    svoworksheet.set_column('L:L', col_widths["%ofPlayers"], svoworkbook.add_format({'num_format': '0.00%'})) ## %ofPlayers
+    merge_fmt = svoworkbook.add_format({'bold': 1, 'border': 1, 'align': 'center','valign': 'vcenter', 'font_size': 20})
+    # svoworksheet.merge_range('A1:L1', f'{input_filename} Summary - {rawdf_2.shape[0]} Players', merge_fmt)
+    svoworksheet.write(0, 0, f'{input_filename} Summary', merge_fmt)

@@ -22,20 +22,23 @@ def DeckSearch(d, mode = 1):
     def IsSword(d):
         return (d.count('.2.') >= 1)
     def IsMarsSword(d):
-        return (sum(d.count(x) for x in ["Mars, Belligerent Flame"]) >= 3)
+        return (sum(d.count(x) for x in ["Mars, Belligerent Flame"]) >= 2)
     def IsLootSword(d):
         return (sum(d.count(x) for x in ["Tidal Gunner", "Barbaros, Briny Convict", "Deep-Sea Scout", "Storm-Wracked First Mate"]) >= 8)
-    def IsCommanderSword(d):
-        return (sum(d.count(x) for x in ["Royal Fortress", "General Maximus", "Radiant Luminous Mage"]) >= 7)
+    def IsWeissSword(d):
+        return ((sum(d.count(x) for x in ["Galdr, Heroic Headmaster", "Lecia & Nano, Twilight Trainees", "Taketsumi, Aconite Paladin", "General Maximus"]) >= 8) & (sum(d.count(x) for x in ["Weiss, Discerning Professor"]) >= 1) & (sum(d.count(x) for x in ["Royal Fortress"]) == 0))
     def IsHeroicSword(d):
         return (sum(d.count(x) for x in ["Flame Soldier", "Amerro, Spear Knight", "Mach Knight", "Ironwrought Defender", "Windslasher"]) >= 10)
     def IsCommanderSword(d):
-        return (sum(d.count(x) for x in ["Royal Fortress", "General Maximus", "Warden of Honor", "Lecia & Nano, Twilight Trainees"]) >= 9)
+        return ((sum(d.count(x) for x in ["General Maximus", "Warden of Honor", "Lecia & Nano, Twilight Trainees", "Princess Merveille"]) >= 8) & (sum(d.count(x) for x in ["Royal Fortress"]) >= 1))
 
     if IsSword(d):
         x = "OTHER SWORD"
         if IsMarsSword(d):
             x = "Mars Sword"
+            y.append(x)
+        if IsWeissSword(d):
+            x = "Weiss Sword"
             y.append(x)
         if IsLootSword(d):
             x = "Loot Sword"
@@ -88,6 +91,8 @@ def DeckSearch(d, mode = 1):
         return ((sum(d.count(x) for x in ["Draconic Armor", "Draconir, Knuckle Dragon", "Hammer Dragonewt", "Lævateinn Dragon"]) >= 8))
     def IsBuffDragon(d):
         return ((sum(d.count(x) for x in ["Gunbein, Lofty Dragonewt", "Grand Slam Tamer", "Coach Joe, Fiery Counselor", "Dragonborn Striker"]) >= 8))
+    def IsBahamutDragon(d):
+        return ((sum(d.count(x) for x in ["Drazael, Ravening Enforcer", "Si Long, Draconic God-Queen", "Waterwyrm's Blessing", "Olivia & Sylvia, Wardens"]) >= 9) & (sum(d.count(x) for x in ["Terra Finis"]) >= 1) & (sum(d.count(x) for x in ["Ultimate Bahamut"]) >= 1))
 
     if IsDragon(d):
         x = "OTHER DRAGON"
@@ -99,6 +104,9 @@ def DeckSearch(d, mode = 1):
             y.append(x)
         if IsBuffDragon(d):
             x = "Buff Dragon"
+            y.append(x)
+        if IsBahamutDragon(d):
+            x = "Bahamut Dragon"
             y.append(x)
     
     ## Shadowcraft
@@ -138,7 +146,7 @@ def DeckSearch(d, mode = 1):
     def IsEvoBlood(d):
         return ((sum(d.count(x) for x in ["Alice, Wandering Dreamer", "Dancing Mini Soul Devil", "Tevali, Demonic Cat", "Signa, Sealed Madwolf"]) >= 8) & (sum(d.count(x) for x in ["Paracelise, Demon of Greed"]) < 2))
     def IsVengeanceBlood(d):
-        return ((sum(d.count(x) for x in ["Mach-Speed Maron", "Galom, Empress Fist", "Vulgus, Infernal Headmistress", "Doomlord of the Abyss", "Waltz, Moonlight Wolf-King"]) >= 9) & (sum(d.count(x) for x in ["Paracelise, Demon of Greed"]) < 2))
+        return ((sum(d.count(x) for x in ["Mach-Speed Maron", "Galom, Empress Fist", "Vulgus, Infernal Headmistress", "Doomlord of the Abyss", "Waltz, Moonlight Wolf-King", "Deceptive Shapeshifter"]) >= 12) & (sum(d.count(x) for x in ["Paracelise, Demon of Greed"]) < 2))
     
     if IsBlood(d):
         x = "OTHER BLOOD"
