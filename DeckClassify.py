@@ -25,12 +25,21 @@ def DeckSearch(d, mode = 1):
         return (sum(d.count(x) for x in ["Mars, Belligerent Flame"]) >= 2)
     def IsLootSword(d):
         return (sum(d.count(x) for x in ["Tidal Gunner", "Barbaros, Briny Convict", "Deep-Sea Scout", "Storm-Wracked First Mate"]) >= 8)
+<<<<<<< HEAD
     def IsWeissSword(d):
         return ((sum(d.count(x) for x in ["Galdr, Heroic Headmaster", "Lecia & Nano, Twilight Trainees", "Taketsumi, Aconite Paladin", "General Maximus"]) >= 8) & (sum(d.count(x) for x in ["Weiss, Discerning Professor"]) >= 1) & (sum(d.count(x) for x in ["Royal Fortress"]) == 0))
     def IsHeroicSword(d):
         return (sum(d.count(x) for x in ["Flame Soldier", "Amerro, Spear Knight", "Mach Knight", "Ironwrought Defender", "Windslasher"]) >= 10)
     def IsCommanderSword(d):
         return ((sum(d.count(x) for x in ["General Maximus", "Warden of Honor", "Lecia & Nano, Twilight Trainees", "Princess Merveille"]) >= 8) & (sum(d.count(x) for x in ["Royal Fortress"]) >= 1))
+=======
+    def IsAcademicSword(d):
+        return (sum(d.count(x) for x in ["Weiss, Discerning Professor", 'Galdr, Heroic Headmaster', 'Lecia & Nano, Twilight Trainees', 'Lucius, Travelled Trainer']) >= 7)
+    def IsHeroicSword(d):
+        return (sum(d.count(x) for x in ["Flame Soldier", "Amerro, Spear Knight", "Mach Knight", "Ironwrought Defender", "Windslasher"]) >= 10)
+    def IsCommanderSword(d):
+        return (sum(d.count(x) for x in ["Royal Fortress", "General Maximus", "Warden of Honor", "Radiant Luminous Mage"]) >= 9)
+>>>>>>> 2fd8e3b780b800785b16fc83d2767cde5f9ebfcd
 
     if IsSword(d):
         x = "OTHER SWORD"
@@ -42,6 +51,9 @@ def DeckSearch(d, mode = 1):
             y.append(x)
         if IsLootSword(d):
             x = "Loot Sword"
+            y.append(x)
+        if IsAcademicSword(d):
+            x = "Academic Sword"
             y.append(x)
         if IsHeroicSword(d):
             x = "Heroic Sword"
@@ -92,7 +104,11 @@ def DeckSearch(d, mode = 1):
     def IsBuffDragon(d):
         return ((sum(d.count(x) for x in ["Gunbein, Lofty Dragonewt", "Grand Slam Tamer", "Coach Joe, Fiery Counselor", "Dragonborn Striker"]) >= 8))
     def IsBahamutDragon(d):
+<<<<<<< HEAD
         return ((sum(d.count(x) for x in ["Drazael, Ravening Enforcer", "Si Long, Draconic God-Queen", "Waterwyrm's Blessing", "Olivia & Sylvia, Wardens"]) >= 9) & (sum(d.count(x) for x in ["Terra Finis"]) >= 1) & (sum(d.count(x) for x in ["Ultimate Bahamut"]) >= 1))
+=======
+        return ((sum(d.count(x) for x in ["Terra Finis", "Olivia & Sylvia, Wardens", "Drazael, Ravening Enforcer", "Si Long, Draconic God-Queen"]) >= 8) & (sum(d.count(x) for x in ["Ultimate Bahamut"]) >= 2))
+>>>>>>> 2fd8e3b780b800785b16fc83d2767cde5f9ebfcd
 
     if IsDragon(d):
         x = "OTHER DRAGON"
